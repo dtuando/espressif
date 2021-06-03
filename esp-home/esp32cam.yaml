@@ -1,0 +1,25 @@
+esphome:
+  name: esp32cam
+  platform: ESP32
+  board: esp32cam
+
+wifi:
+  ssid: "Lion-Warrior_2.4G"
+  password: "hafaadai894"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Esp32Cam Fallback Hotspot"
+    password: "feRy2CSTaWQU"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "bluesnake193"
+
+ota:
+  password: "bluesnake193"
