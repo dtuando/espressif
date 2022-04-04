@@ -1,6 +1,7 @@
 import network
 from esp import espnow
-from machine import Pin, SoftI2C, sleep
+from machine import Pin, SoftI2C
+from time import sleep
 import htu21d
 
 s = htu21d.HTU21D(22,21)
@@ -25,4 +26,5 @@ while True:
     e.send("{}".format(temp))
     e.send('Humidity:')       # Send to all peers
     e.send("{}".format(hum))
+    print('Message Sent...')
     sleep(5)
