@@ -5,14 +5,21 @@ import network
 import ubinascii
 from esp import espnow
 
+
 w0 = network.WLAN(network.STA_IF)
 w0.active(True)
+
+#UART 
 uart = UART(2, baudrate=9600, tx=17, rx=16)
+
+#Get Mac Address
 mac = ubinascii.hexlify(network.WLAN().config('mac'),':').decode()
 print("MAC: " + mac)
 
+#Initiate ESP-NOW
 e = espnow.ESPNow()
 e.init()
+#Connecting to Peer (Sender)
 peer = b'\xe0\xe2\xe6\xd0\x1b\xf4'   # MAC address of peer's wifi interface
 e.add_peer(peer)
 
@@ -23,8 +30,4 @@ while True:
         print(note)
         uart.write(note)
         print('Sent')
-        sleep(5)
-
-
-
-
+        sleep(1)
