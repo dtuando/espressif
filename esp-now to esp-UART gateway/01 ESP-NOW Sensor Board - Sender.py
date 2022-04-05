@@ -6,9 +6,9 @@ import htu21d
 
 s = htu21d.HTU21D(22,21)
 hum = s.humidity
-temp = s.temperature * 1.8 + 32
-print('Hum: ', + hum)
-print("Temp: {}".format(temp) + " F")
+temp = s.temperature * 1.8 + 32     #Converted to Fahrenheit
+print('Hum: {:.2f}'.format(hum))
+print('Temp: {:.2f}'.format(temp))
 
 degree = str(b'\xc2\xb0', 'utf8')
 
@@ -16,15 +16,16 @@ degree = str(b'\xc2\xb0', 'utf8')
 w0 = network.WLAN(network.STA_IF)  # Or network.AP_IF
 w0.active(True)
 
+#Initiate ESP-NOW
 e = espnow.ESPNow()
 e.init()
-peer = b'\x08\x3a\xf2\x52\x75\xc8'   # MAC address of peer's wifi interface
+#Connect to Peer (Reciever)
+peer = b'\xff\xff\xff\xff\xff\xff'   # MAC address of peer's wifi interface
 e.add_peer(peer)
 
 while True:
     e.send('Temperature:')       # Send to all peers
-    e.send("{}".format(temp))
-    e.send('Humidity:')       # Send to all peers
-    e.send("{}".format(hum))
-    print('Message Sent...')
+    e.send('Temp: {:.2f}'.format(temp))     #Send Temp
+    e.send('Temp: {:.2f}'.format(hum))      #Send Humidity
+    print('Message Sent...')                #Print Sent
     sleep(5)
