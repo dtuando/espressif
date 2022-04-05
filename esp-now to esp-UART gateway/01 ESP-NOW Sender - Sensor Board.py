@@ -20,7 +20,7 @@ w0.active(True)
 e = espnow.ESPNow()
 e.init()
 #Connect to Peer (Reciever)
-peer = b'\xff\xff\xff\xff\xff\xff'   # MAC address of peer's wifi interface
+peer = b'\xff\xff\xff\xff\xff\xff'   # MAC address of Reciever's wifi interface
 e.add_peer(peer)
 
 while True:
