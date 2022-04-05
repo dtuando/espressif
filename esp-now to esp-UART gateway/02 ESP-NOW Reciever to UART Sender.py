@@ -20,7 +20,7 @@ print("MAC: " + mac)
 e = espnow.ESPNow()
 e.init()
 #Connecting to Peer (Sender)
-peer = b'\xe0\xe2\xe6\xd0\x1b\xf4'   # MAC address of peer's wifi interface
+peer = b'\xff\xff\xff\xff\xff\xff'   # MAC address of Senders wifi interface
 e.add_peer(peer)
 
 while True:
