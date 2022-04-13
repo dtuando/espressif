@@ -8,9 +8,9 @@ sta_if.active(True)
 ap_if = network.WLAN(network.AP_IF)
 ap_if.active(True)
 
-sta_passw = 'fresno559'
-sta_essid = 'Bedrooms'
-ap_essid = 'TheV01D-BR'
+sta_passw = 'CHANGEME'
+sta_essid = 'CHANGEME'
+ap_essid = 'CHANGEME'
 #ap_channel =int(7) #channel number here
 
 def ap_sta():
